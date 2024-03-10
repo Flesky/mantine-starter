@@ -14,7 +14,7 @@ export const NavbarContext = createContext({
 export default function DefaultLayout() {
   const [mobileOpened, { toggle: toggleMobile }] = useDisclosure()
   const [desktopOpened, { toggle: toggleDesktop }] = useDisclosure(true)
-  const location = useLocation()
+  const { pathname } = useLocation()
 
   return (
     <AppShell
@@ -41,10 +41,10 @@ export default function DefaultLayout() {
               },
             }}
             onClick={() => {
-              if (location.pathname !== item.to)
+              if (pathname !== item.to)
                 toggleMobile()
             }}
-            active={!!matchPath(location.pathname, item.to)}
+            active={!!matchPath(pathname, item.to)}
             leftSection={<item.icon />}
             component={RouterNavLink}
             label={item.label}
@@ -53,7 +53,7 @@ export default function DefaultLayout() {
           />
         ))}
       </AppShell.Navbar>
-      <AppShell.Main>
+      <AppShell.Main className="h-dvh">
         <NavbarContext.Provider value={{
           desktopOpened,
           toggleDesktop,

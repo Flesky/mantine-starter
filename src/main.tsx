@@ -6,8 +6,8 @@ import { QueryClient, QueryClientProvider } from '@tanstack/react-query'
 import { Notifications } from '@mantine/notifications'
 import { RouterProvider } from 'react-router-dom'
 import { ReactQueryDevtools } from '@tanstack/react-query-devtools'
-import theme from './utils/theme.ts'
 import { router } from './utils/router'
+import theme from './utils/theme.ts'
 import '@mantine/core/styles.css'
 import '@mantine/notifications/styles.css'
 import '@mantine/charts/styles.css'
@@ -19,8 +19,11 @@ const queryClient = new QueryClient()
 
 ReactDOM.createRoot(document.getElementById('root')!).render(
   <React.StrictMode>
+    {/* <AuthProvider {...config}> */}
     <MantineProvider theme={theme}>
-      <ModalsProvider>
+      <ModalsProvider
+        labels={{ cancel: 'Cancel', confirm: 'Save' }}
+      >
         <QueryClientProvider client={queryClient}>
           <Notifications />
           <RouterProvider router={router} />
@@ -28,5 +31,6 @@ ReactDOM.createRoot(document.getElementById('root')!).render(
         </QueryClientProvider>
       </ModalsProvider>
     </MantineProvider>
+    {/* </AuthProvider> */}
   </React.StrictMode>,
 )

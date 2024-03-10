@@ -8,3 +8,20 @@ This is a work in progress. Will be improved upon as I learn more React.
 * Yup
 * React Router
 * TanStack React Query
+
+## Built-in Components
+
+* Header
+* Datatable
+    ```tsx
+    import AppClientTable from "./AppClientTable";
+    
+    <AppClientTable
+      id="id"
+      tableProps={{
+        records: [],
+        columns: [],
+      }}
+    >
+    </AppClientTable>
+    ```
